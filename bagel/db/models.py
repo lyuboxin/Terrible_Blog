@@ -3,13 +3,15 @@ from pymodm import MongoModel, fields
 from utils.utils import get_timestamp
 
 
-
+class AdminCode(MongoModel):
+    code = fields.CharField(required=True, blank=False)
 
 class User(MongoModel):
     username = fields.CharField(required=True, blank=False)
     password = fields.CharField(required=True, blank=False)
     email = fields.CharField(required=True, blank=False)
-    type = fields.CharField(required=True, blank=False, choices=['admin', 'visitor'])
+    type = fields.CharField(required=True, blank=False)
+    code = fields.CharField(required=True,blank=False)
 
 
 
