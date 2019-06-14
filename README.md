@@ -8,6 +8,8 @@ User Register
 
 User Login
 
+Admin Register
+
 Admin post
 
 ## muffin: Frontend(react)
