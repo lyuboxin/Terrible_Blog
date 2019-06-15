@@ -69,3 +69,5 @@ def admin_register():
         'success': 1
     })
 
+
+

@@ -7,8 +7,10 @@ conf = {
     "host": "127.0.0.1",
     "port": os.environ.get("PORT", 5000),
     "database_name": "",
-    "database_uri": ""
-
+    "database_uri": "",
+    "expire_time": 120,
+    "emailname": "",
+    "emailpassword": ""
 }
 
 def initialize(config_file):
