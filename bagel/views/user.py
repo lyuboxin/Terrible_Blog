@@ -18,7 +18,8 @@ def register():
             username = username,
             password = request.form['password'],
             email = request.form['email'],
-            type = 'visitor'
+            type = 'visitor',
+            code = 0
         )
         new_user.save()
     except ValidationError as e:
@@ -68,6 +69,8 @@ def admin_register():
     return jsonify({
         'success': 1
     })
+
+
 
 
 

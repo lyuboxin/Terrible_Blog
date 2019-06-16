@@ -1,0 +1,7 @@
+{
+  "log_level": "DEBUG",
+  "database_uri": "mongodb://localhost:27017/blog",
+  "database_name": "blog",
+  "emailname": "terrible_blog@163.com",
+  "emailpassword": "qwer1234"
+}

@@ -28,8 +28,8 @@ def login():
         'success': 1
     })
 
-@auth_blueprint.route('/forgot_password', methods=['POST'])
-def forgot_password():
+@auth_blueprint.route('/send_verification_code', methods=['POST'])
+def send_verification_code():
     email = request.form['email']
     try:
         user = User.objects.get({'email':email})
@@ -68,6 +68,57 @@ def forgot_password():
     return jsonify({
         'success': 1
     })
+
+@auth_blueprint.route('/verify_code', methods=['POST'])
+def verify_code():
+    email = request.form['email']
+    code = request.form['code']
+    try:
+        user = User.objects.get({'email': email})
+    except:
+        return jsonify({
+            'success': 0,
+            'msg': error_msg.USER_NOT_EXISTS
+        }), 404
+    vcode = VerificationCode.objects.raw({'user_id': user._id})
+    if vcode.count() == 0 or vcode.first().code != code:
+        return jsonify({
+            "success": 0
+        })
+    return jsonify({
+        "success": 1
+    })
+
+@auth_blueprint.route('/reset_password', methods=['POST'])
+def reset_password():
+    email = request.form['email']
+    code = request.form['code']
+    new_password = request.form['password']
+    try:
+        user = User.objects.get({'email': email})
+    except:
+        return jsonify({
+            'success': 0,
+            'msg': error_msg.USER_NOT_EXISTS
+        }), 404
+    vcode = VerificationCode.objects.raw({'user_id': user._id})
+    if vcode.count() == 0 or vcode.first().code != code:
+        return jsonify({
+            'success': 0
+        })
+    
+    try:
+        user.password = new_password
+        user.save()
+    except ValidationError as e:
+        return jsonify({
+            'success': 0,
+            'msg': '{}:{}'.format(error_msg.ILLEGAL_ARGUMENT, ','.join(list(error_msg.keys())))
+        }), 400
+    return jsonify({
+        'success': 1
+    })
+
 
 
     
