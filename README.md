@@ -14,4 +14,8 @@ Sending verification Code
 
 Admin post
 
+Verify code
+
+reset password
+
 ## muffin: Frontend(react)
