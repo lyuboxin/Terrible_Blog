@@ -10,13 +10,13 @@ User Login
 
 Admin Register
 
-Sending verification Code
+Sending Verification Code
 
-Admin post
+Admin Post
 
-Verify code
+Verify Code
 
-reset passwor
+Reset Password
 
 Delete Post
 
