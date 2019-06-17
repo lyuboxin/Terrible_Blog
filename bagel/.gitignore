@@ -1,5 +1,5 @@
 *.pyc
 *.log
-config-*.json
+config.json
 
 .vscode/
