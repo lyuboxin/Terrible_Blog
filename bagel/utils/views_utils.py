@@ -16,6 +16,8 @@ def get_val_from_req(field_name):
 
 def _req_field_exists_in_db(model, field_name, field_name_in_db, field_type):
     field = get_val_from_req(field_name)
+    logger.info('_id:{}'.format(field))
+    logger.info('post_id :{}'.format(field_name))
     if not field_type:
         res = dbutils.exists(model, {field_name_in_db: field})
     else:

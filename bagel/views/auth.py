@@ -19,6 +19,7 @@ def login():
     except:
         return jsonify({
             'success': 0,
+            'msg': "abc"
         })
 
     u = login_utils.UserLogin()

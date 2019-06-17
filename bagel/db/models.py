@@ -28,7 +28,7 @@ class User(MongoModel):
 class Content(MongoModel):
     title = fields.CharField(required=True, blank=False)
     content = fields.CharField(required=True, blank=False)
-    author = fields.ReferenceField(User, required=True)
+    author = fields.CharField(required=True, blank=False)
     create_at = fields.DateTimeField(required=True, default=get_timestamp)
 
 class VerificationCode(MongoModel):

@@ -2,9 +2,14 @@ import logging
 
 import flask_login
 
+from bson import ObjectId
+
 from db.models import User
 from utils import error_msg
 from functools import wraps
+from flask import jsonify
+
+from flask import request
 
 from app import app
 
@@ -26,7 +31,7 @@ def user_loader(user_id):
         return None
 
     u = UserLogin()
-    u.id = str(user.id)
+    u.id = str(user._id)
     u.user_obj = user
     return u
 
