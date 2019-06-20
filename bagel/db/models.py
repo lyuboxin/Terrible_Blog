@@ -42,4 +42,18 @@ class VerificationCode(MongoModel):
             pymongo.IndexModel([('create_at', pymongo.ASCENDING)], expireAfterSeconds=conf['expire_time'])
         ]
 
+class Comments(MongoModel):
+    author_id = fields.ReferenceField(User, required=True)
+    author_name = fields.CharField(required=True, blank=False)
+    post_id = fields.ReferenceField(Content, required=True)
+    comment = fields.CharField(required=True, blank=False)   
+    create_at = fields.DateTimeField(required=True, default=get_timestamp)
+
+    class Meta:
+        indexes = [
+            pymongo.IndexModel([('post_id', pymongo.ASCENDING)]),
+            pymongo.IndexModel([('author', pymongo.ASCENDING)])
+        ]
+
+
 
